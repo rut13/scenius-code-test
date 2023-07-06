@@ -7,4 +7,14 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+		<PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Scenius.CodeTest.Data\Scenius.CodeTest.Data.csproj" />
+	  <ProjectReference Include="..\Scenius.CodeTest.Shared\Scenius.CodeTest.Shared.csproj" />
+	</ItemGroup>
+
 </Project>

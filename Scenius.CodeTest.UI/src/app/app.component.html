@@ -1,18 +1,16 @@
 <div>
   <label for="calculation">Do new calculation: </label>
   <input id="calculation" [(ngModel)]="calculation">
+  <button (click)="doCalculation()">Calculate</button>
   <div *ngIf="result != 0">
+    <label>Result:</label>
     <div>{{result}}</div>
   </div>
-  <button (click)="doCalculation()">Calculate</button>
 </div>
-
 
 <h2>Calculations</h2>
 <ul>
   <li *ngFor="let calc of calculationResults | async">
-    <div>{{ calc.rawCalculation }}</div>
-    =
-    <div>{{ calc.result }}</div>
+    <div>{{ calc.rawCalculation }} = {{ calc.result }}</div>
   </li>
 </ul>

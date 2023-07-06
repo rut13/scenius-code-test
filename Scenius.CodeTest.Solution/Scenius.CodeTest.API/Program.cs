@@ -21,6 +21,8 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 
+app.UseCors(opts => opts.WithOrigins(builder.Configuration.GetValue<string>("Frontend")).AllowAnyMethod().AllowAnyHeader());
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

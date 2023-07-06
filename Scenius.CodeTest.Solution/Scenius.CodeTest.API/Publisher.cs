@@ -5,9 +5,9 @@ namespace Scenius.CodeTest.API
 {
     public class Publisher
     {
-        private ConnectionFactory _factory;
-        private IConnection _connection;
-        private IModel _channel;
+        private readonly ConnectionFactory _factory;
+        private readonly IConnection _connection;
+        private readonly IModel _channel;
 
         private const string QUEUE = "Calculator";
 

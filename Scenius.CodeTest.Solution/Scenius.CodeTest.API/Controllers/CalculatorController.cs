@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Scenius.CodeTest.Data;
-using Scenius.CodeTest.Shared;
 
 namespace Scenius.CodeTest.API.Controllers
 {
@@ -9,8 +8,8 @@ namespace Scenius.CodeTest.API.Controllers
     [Route("[controller]")]
     public class CalculatorController : ControllerBase
     {
-        private CalculatorDbContext _context;
-        private Publisher _publisher;
+        private readonly CalculatorDbContext _context;
+        private readonly Publisher _publisher;
 
         public CalculatorController(CalculatorDbContext context, IConfiguration configuration)
         {
@@ -18,11 +17,11 @@ namespace Scenius.CodeTest.API.Controllers
             _publisher = new Publisher(configuration);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetLatestResult()
-        //{
-            
-        //}
+        [HttpGet]
+        public async Task<IActionResult> GetLatestResult()
+        {
+            return Ok(await _context.CalculationResults.OrderByDescending(cr => cr.Id).LastOrDefaultAsync());
+        }
 
         [HttpGet("all")]
         public async Task<IActionResult> GetAllResults()
